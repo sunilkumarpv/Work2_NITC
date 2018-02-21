@@ -11,7 +11,7 @@ DOID_LD_Common <- subset(DOID, DOID$`Preferred Label` %in% LD_NoDup$Disease)
 
 LD_Final <- subset(LD_NoDup, LD_NoDup$Disease %in% DOID_LD_Common$`Preferred Label`)
 
-# LncRNA, Disease and DOID in a single file.. Organism coloumn will be replaced by DOID column
+# Making LncRNA, Disease and DOID in to a single file.. Organism coloumn will be replaced by DOID column
 
 LDFinal_vector <- LD_Final[['Disease']]
 

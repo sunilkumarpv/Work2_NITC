@@ -49,5 +49,7 @@ LncSim <- as.matrix(forceSymmetric(LncSim))
 rownames(LncSim) <- LncRNA_List$LncRNA
 colnames(LncSim) <- LncRNA_List$LncRNA
 
+diag(LncSim) <- 1
+
 
 

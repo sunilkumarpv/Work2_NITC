@@ -27,11 +27,27 @@ sim_L1_L2 <- apply(ind2,1,function(x){
   else
      (sum(apply(sim[[x[1]]],1,max))+sum(apply(sim[[x[1]]],2,max)))/(nrow(sim[[x[1]]])+ncol(sim[[x[1]]]))
 })
-output <- cbind(ind1, sim_L1_L2)
+output <- cbind(ind1, sim_L1_L2) # equivalent to LD_Assoc
 
 # output1 carries similarity score between each pair of LncRNAs.. 
+# Conversion to LncRNA Adjacency Matrix
 
+labels <- unique(c(output[,1], output[,2]))
 
+LncSim <- matrix(0, length(labels), length(labels))
+rownames(LncSim) <- labels
+colnames(LncSim) <-labels
+
+LncSim[output[, 1:2]] <- as.numeric(output[, 3]) 
+
+# filling up lower triangular positions... 
+library(Matrix)
+LncSim <- as.matrix(forceSymmetric(LncSim))
+
+# Assign row names and column names
+
+rownames(LncSim) <- LncRNA_List$LncRNA
+colnames(LncSim) <- LncRNA_List$LncRNA
 
 
 

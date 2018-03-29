@@ -12,6 +12,7 @@ DOIDs <- apply(index, 1, function(x) LD_Final[which(LncRNA_List[x[1],1]==LD_Fina
 LncRNA_DOID <- cbind(LncRNA_Names,DOIDs) 
 
 # Disease similarity computation
+library(DOSE)
 
 ind <- matrix(1:598,nrow=598,ncol=1,byrow=TRUE) # Function to run from 1 to 598 lncRNAs
 ind1 <- t(combn(nrow(LD_Assoc),2)) #  C(592,2) combinations created and stored in inedex matrix, ind1
